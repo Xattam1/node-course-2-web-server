@@ -2,6 +2,9 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+// process.env is an object that stores all of our environment variables as key value pairs.
+// The || (or) operator will set port to 3000 if the enviroment variable does not exist.
+const port = process.env.PORT || 3000;
 var app = express();
 
 // registerPartials is going to take the directory you wan to use for all of your handlebar partial files and we're going to be specifying that directory as the first and only argument.
@@ -105,7 +108,7 @@ app.get('/bad', (req, res) => {
 // app.listen binds the application to a port on the machine
 // does take a second optional argument -> a function
 // this will let us do something once the server is up
-app.listen(3000, () => {
-	console.log('Server is up on port 3000.');
+app.listen(port, () => {
+	console.log(`Server is up on port ${port}.`);
 });
 
